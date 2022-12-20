@@ -22,7 +22,7 @@ public class ClientController {
     }
 
     @PostMapping(path = "register")
-public void register(@RequestBody Client client) {
-        clientService.register(client);
+    public void register(@RequestBody Client client) {
+            clientService.register(client);
+        }
     }
-}
