@@ -1,7 +1,7 @@
-package dev.dashboard.bankconnect.Account;
+package dev.dashboard.bankconnect.account;
 
-import dev.dashboard.bankconnect.Client.Client;
-import dev.dashboard.bankconnect.Transfer.Transfer;
+import dev.dashboard.bankconnect.client.Client;
+import dev.dashboard.bankconnect.transfer.Transfer;
 import jakarta.persistence.*;
 
 import java.util.List;

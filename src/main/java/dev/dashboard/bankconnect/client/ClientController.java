@@ -1,8 +1,7 @@
-package dev.dashboard.bankconnect.Client;
+package dev.dashboard.bankconnect.client;
 
 
-import dev.dashboard.bankconnect.Dto.LoginDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import dev.dashboard.bankconnect.dto.LoginDto;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

@@ -1,6 +1,6 @@
-package dev.dashboard.bankconnect.Account;
+package dev.dashboard.bankconnect.account;
 
-import dev.dashboard.bankconnect.Dto.TransferRequest;
+import dev.dashboard.bankconnect.dto.TransferRequest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

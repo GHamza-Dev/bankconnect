@@ -1,6 +1,6 @@
-package dev.dashboard.bankconnect.Transfer;
+package dev.dashboard.bankconnect.transfer;
 
-import dev.dashboard.bankconnect.Account.Account;
+import dev.dashboard.bankconnect.account.Account;
 import jakarta.persistence.*;
 
 @Entity

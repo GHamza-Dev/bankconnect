@@ -1,4 +1,4 @@
-package dev.dashboard.bankconnect.Dto;
+package dev.dashboard.bankconnect.dto;
 
 public class TransferRequest {
     private Long fromAccountId;

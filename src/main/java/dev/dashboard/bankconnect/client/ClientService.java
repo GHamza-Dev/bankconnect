@@ -1,4 +1,4 @@
-package dev.dashboard.bankconnect.Client;
+package dev.dashboard.bankconnect.client;
 
 
 import org.springframework.stereotype.Service;

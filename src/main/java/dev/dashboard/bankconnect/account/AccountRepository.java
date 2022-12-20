@@ -1,4 +1,4 @@
-package dev.dashboard.bankconnect.Account;
+package dev.dashboard.bankconnect.account;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

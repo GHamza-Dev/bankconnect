@@ -1,7 +1,7 @@
-package dev.dashboard.bankconnect.Client;
+package dev.dashboard.bankconnect.client;
 
 
-import dev.dashboard.bankconnect.Account.Account;
+import dev.dashboard.bankconnect.account.Account;
 import jakarta.persistence.*;
 
 @Entity
