@@ -14,13 +14,6 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    @PostMapping(path = "login")
-    public Client login(@RequestBody LoginDto loginDto) {
-        System.out.println("here");
-        Client client = clientService.login(loginDto.getEmail(), loginDto.getPassword());
-        return client;
-    }
-
     @PostMapping(path = "register")
     public void register(@RequestBody Client client) {
             clientService.register(client);
