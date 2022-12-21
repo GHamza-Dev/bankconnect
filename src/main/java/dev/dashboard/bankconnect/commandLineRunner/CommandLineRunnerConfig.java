@@ -1,10 +1,13 @@
 package dev.dashboard.bankconnect.commandLineRunner;
 
 import dev.dashboard.bankconnect.account.AccountRepository;
+import dev.dashboard.bankconnect.client.Client;
 import dev.dashboard.bankconnect.client.ClientRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Configuration
 public class CommandLineRunnerConfig {
