@@ -21,6 +21,9 @@ public class Transfer {
 
     private String status;
 
+    @Column(name = "verification_code")
+    private String verificationCode;
+
     @ManyToOne
     @JoinColumn(name = "sender_account_id", insertable = false, updatable = false)
     private Account sender;
@@ -83,5 +86,13 @@ public class Transfer {
 
     public void setReceiver(Account receiver) {
         this.receiver = receiver;
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
     }
 }

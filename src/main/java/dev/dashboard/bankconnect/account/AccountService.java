@@ -2,6 +2,7 @@ package dev.dashboard.bankconnect.account;
 
 import dev.dashboard.bankconnect.client.Client;
 import dev.dashboard.bankconnect.client.ClientRepository;
+import dev.dashboard.bankconnect.transfer.Transfer;
 import dev.dashboard.bankconnect.transfer.TransferRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -56,10 +57,22 @@ public class AccountService {
         if (fromAccount.getBalance() < amount)
             throw new IllegalStateException("Insufficient funds in account " + fromAccountId);
 
-        fromAccount.setBalance(fromAccount.getBalance() - amount);
-        toAccount.setBalance(toAccount.getBalance() + amount);
+        Transfer transfer = new Transfer();
 
+        transfer.setAmount(amount);
+        transfer.setSenderAccountId(fromAccountId);
+        transfer.setReceiverAccountId(toAccountId);
+        transfer.setStatus("pending");
+
+        StringBuilder code = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            code.append((int) (Math.random() * 10));
+        }
+        transfer.setVerificationCode(code.toString());
+
+        fromAccount.setBalance(fromAccount.getBalance() - amount);
         accountRepository.save(fromAccount);
-        accountRepository.save(toAccount);
+
+        transferRepository.save(transfer);
     }
 }
