@@ -16,6 +16,6 @@ public class ClientController {
 
     @PostMapping(path = "register")
     public void register(@RequestBody Client client) {
-            clientService.register(client);
-        }
+        clientService.register(client);
     }
+}

@@ -5,7 +5,6 @@ public class TransferRequest {
     private Long toAccountId;
     private Double amount;
 
-
     public Long getFromAccountId() {
         return fromAccountId;
     }
