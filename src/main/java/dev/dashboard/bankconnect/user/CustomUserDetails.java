@@ -18,7 +18,7 @@ public class CustomUserDetails implements UserDetails {
         this.userName = user.getEmail();
         this.password = user.getPassword();
         this.active = true;
-        this.grantedAuthorities.add(new SimpleGrantedAuthority("USER_ROLE"));
+        this.grantedAuthorities.add(new SimpleGrantedAuthority(getRole(user.getClass())));
     }
 
     @Override
@@ -54,5 +54,9 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return active;
+    }
+
+    private String getRole(Class clazz){
+        return "ROLE_"+clazz.getSimpleName().toUpperCase();
     }
 }

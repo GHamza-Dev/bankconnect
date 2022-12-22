@@ -1,6 +1,6 @@
 package dev.dashboard.bankconnect.dto;
 
-public class AuthResponse {
+public class AuthResponse implements Response{
     private String message;
     private String token;
 

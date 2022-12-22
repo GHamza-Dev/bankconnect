@@ -1,7 +1,6 @@
 package dev.dashboard.bankconnect.client;
 
 
-import dev.dashboard.bankconnect.dto.LoginDto;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
