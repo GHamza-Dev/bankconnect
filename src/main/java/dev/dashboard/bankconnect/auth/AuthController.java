@@ -1,6 +1,7 @@
 package dev.dashboard.bankconnect.auth;
 
 import dev.dashboard.bankconnect.dto.AuthRequest;
+import dev.dashboard.bankconnect.dto.Response;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +19,25 @@ public class AuthController {
 
     @PostMapping("/user")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody AuthRequest request){
-        String email = request.getEmail()+":USER";
-        return ResponseEntity.ok(authService.authenticate(email,request.getPassword()));
+        try {
+            String email = request.getEmail()+":CLIENT";
+            Response response = authService.authenticate(email,request.getPassword());
+            return ResponseEntity.ok(response);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.status(403).body(new Response(e.getMessage(),403));
+        }
     }
 
     @PostMapping("/agent")
     public ResponseEntity<?> authenticateAgent(@Valid @RequestBody AuthRequest request){
-        String email = request.getEmail()+":AGENT";
-        return ResponseEntity.ok(authService.authenticate(email,request.getPassword()));
+        try {
+            String email = request.getEmail()+":AGENT";
+            Response response = authService.authenticate(email,request.getPassword());
+            return ResponseEntity.ok(response);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.status(403).body(new Response(e.getMessage(),403));
+        }
     }
 }

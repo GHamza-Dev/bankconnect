@@ -1,7 +1,9 @@
 package dev.dashboard.bankconnect.dto;
 
-public class AuthResponse implements Response{
-    private String message;
+
+import java.util.Collection;
+
+public class AuthResponse extends Response  {
     private String token;
 
     public AuthResponse() {
@@ -11,16 +13,26 @@ public class AuthResponse implements Response{
         this.token = token;
     }
 
-    public AuthResponse(String token,String message) {
+    public AuthResponse(String message, Integer status, Collection data, String token) {
+        super(message, status, data);
         this.token = token;
-        this.message = message;
     }
 
-    public String getMessage() {
-        return message;
+    public AuthResponse(String message, Integer status, String token) {
+        super(message, status);
+        this.token = token;
+    }
+
+    public AuthResponse(String message, String token) {
+        super(message);
+        this.token = token;
     }
 
     public String getToken() {
         return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

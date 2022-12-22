@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,23 +27,22 @@ public class AuthService {
         this.jwtUtil = jwtUtil;
     }
 
-    public Response authenticate(String email,String password){
+    public Response authenticate(String email,String password) {
 
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email,password));
         }catch (BadCredentialsException e){
-            System.out.println("Authentication failed: "+e.getMessage());
-            return null;
+            throw e;
         }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
 
-        if (userDetails != null){
-            String jwt = jwtUtil.generateToken(userDetails);
-            return new AuthResponse(jwt,"Authenticated succeeded!");
+        if (userDetails == null){
+            throw new UsernameNotFoundException("No user found with the given email/username: "+email);
         }
 
-        return null;
+        String jwt = jwtUtil.generateToken(userDetails);
+        return new AuthResponse("Authentication succeeded!",jwt);
     }
 }

@@ -1,11 +1,9 @@
 package dev.dashboard.bankconnect.user;
 
 import dev.dashboard.bankconnect.agent.Agent;
-import dev.dashboard.bankconnect.agent.AgentRepository;
 import dev.dashboard.bankconnect.client.Client;
 import dev.dashboard.bankconnect.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
