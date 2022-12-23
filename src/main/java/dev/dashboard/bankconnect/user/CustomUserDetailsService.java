@@ -31,7 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         String _email = StringUtil.extractPrefix(email,':');
         String _role = StringUtil.extractSuffix(email,':');
 
-        User user = _role.equals("AGENT") ?
+        User user = _role.equals("ROLE_AGENT") ?
                 agentRepository.findByEmail(_email) :
                 clientRepository.findByEmail(_email);
 

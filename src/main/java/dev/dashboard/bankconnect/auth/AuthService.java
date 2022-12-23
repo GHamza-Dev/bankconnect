@@ -2,12 +2,12 @@ package dev.dashboard.bankconnect.auth;
 
 import dev.dashboard.bankconnect.dto.AuthResponse;
 import dev.dashboard.bankconnect.dto.Response;
+import dev.dashboard.bankconnect.user.CustomUserDetails;
 import dev.dashboard.bankconnect.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -42,7 +42,7 @@ public class AuthService {
             throw new UsernameNotFoundException("No user found with the given email/username: "+email);
         }
 
-        String jwt = jwtUtil.generateToken(userDetails);
+        String jwt = jwtUtil.generateToken((CustomUserDetails) userDetails);
         return new AuthResponse("Authentication succeeded!",jwt);
     }
 }

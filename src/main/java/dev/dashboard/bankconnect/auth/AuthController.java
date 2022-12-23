@@ -20,7 +20,7 @@ public class AuthController {
     @PostMapping("/user")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody AuthRequest request){
         try {
-            String email = request.getEmail()+":CLIENT";
+            String email = request.getEmail()+":ROLE_CLIENT";
             Response response = authService.authenticate(email,request.getPassword());
             return ResponseEntity.ok(response);
         }catch (Exception e){
@@ -32,7 +32,7 @@ public class AuthController {
     @PostMapping("/agent")
     public ResponseEntity<?> authenticateAgent(@Valid @RequestBody AuthRequest request){
         try {
-            String email = request.getEmail()+":AGENT";
+            String email = request.getEmail()+":ROLE_AGENT";
             Response response = authService.authenticate(email,request.getPassword());
             return ResponseEntity.ok(response);
         }catch (Exception e){
