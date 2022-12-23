@@ -6,12 +6,13 @@ import java.util.Collection;
 public class Response {
     private String message;
     private Integer status;
-    private Collection data;
+    private Collection data = new ArrayList();
 
-    public Response(String message, Integer status, Collection data) {
+
+    public Response(String message, Integer status, Object data) {
         this.message = message;
         this.status = status;
-        this.data = data;
+        this.setData(data);
     }
 
     public Response(String message,Integer status) {
@@ -49,7 +50,11 @@ public class Response {
         return data;
     }
 
-    public void setData(Collection data) {
-        this.data = data;
+    public void setData(Object data) {
+        if(data instanceof Collection<?>){
+            this.data = (Collection) data;
+        }else {
+            this.data.add(data);
+        }
     }
 }

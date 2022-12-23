@@ -1,6 +1,7 @@
 package dev.dashboard.bankconnect.client;
 
 
+import dev.dashboard.bankconnect.account.Account;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -29,5 +30,10 @@ public class ClientService {
             throw new IllegalStateException("Email, cin or phone already exists");
 
         clientRepository.save(client);
+    }
+
+    public Account clientAccountByEmail(String email){
+        Client client = clientRepository.findClientByEmail(email);
+        return client.getAccount();
     }
 }

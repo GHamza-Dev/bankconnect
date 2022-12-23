@@ -46,10 +46,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         String roleAndEmail = email+":"+role;
 
-        System.out.println("Email      ======> "+email);
-        System.out.println("Role       ======> "+role);
-        System.out.println("Role+Email ======> "+roleAndEmail);
-
         if(email != null && SecurityContextHolder.getContext().getAuthentication() == null){
             UserDetails userDetails = userDetailsService.loadUserByUsername(roleAndEmail);
             final boolean isTokenValid = jwtUtil.validateToken(jwtToken,userDetails);

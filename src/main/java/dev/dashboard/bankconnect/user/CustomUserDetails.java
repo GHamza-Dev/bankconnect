@@ -13,6 +13,7 @@ public class CustomUserDetails implements UserDetails {
     private String password;
     private boolean active;
     private String role;
+    private Long id;
     private List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
 
     public CustomUserDetails(User user) {
@@ -21,6 +22,7 @@ public class CustomUserDetails implements UserDetails {
         this.active = true;
         this.grantedAuthorities.add(new SimpleGrantedAuthority(extractRole(user.getClass())));
         this.role = extractRole(user.getClass());
+        this.id = user.getId();
     }
 
     @Override
@@ -68,5 +70,13 @@ public class CustomUserDetails implements UserDetails {
 
     private String extractRole(Class clazz){
         return "ROLE_"+clazz.getSimpleName().toUpperCase();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
