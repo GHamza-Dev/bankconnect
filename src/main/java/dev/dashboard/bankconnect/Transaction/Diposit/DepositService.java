@@ -3,6 +3,8 @@ package dev.dashboard.bankconnect.Transaction.Diposit;
 import dev.dashboard.bankconnect.Transaction.Transaction;
 import dev.dashboard.bankconnect.Transaction.TransactionService;
 import dev.dashboard.bankconnect.account.Account;
+import dev.dashboard.bankconnect.dto.Response;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +22,7 @@ public class DepositService implements TransactionService {
     }
 
     @Override
-    public Transaction makeTransaction(Account senderAccount,Account receiverAccount, Double amount) {
+    public Response makeTransaction(Account senderAccount, Account receiverAccount, Double amount) {
         if(senderAccount == null) return null;
 
         Deposit deposit = new Deposit();
@@ -29,6 +31,16 @@ public class DepositService implements TransactionService {
 
         depositRepository.save(deposit);
 
-        return deposit;
+        if (deposit.getId() != null) {
+            return new Response(
+                    "Transaction done successfully",
+                    200
+            );
+        }
+
+        return new Response(
+                "Ops something went wrong while making this transaction!",
+                500
+        );
     }
 }

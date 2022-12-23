@@ -1,11 +1,12 @@
 package dev.dashboard.bankconnect.Transaction;
 
 import dev.dashboard.bankconnect.account.Account;
+import dev.dashboard.bankconnect.dto.Response;
 
 public interface TransactionService {
 
     boolean canMakeTransaction(Account account, Double amount);
 
-    Transaction makeTransaction(Account senderAccount,Account receiverAccount,Double amount);
+    Response makeTransaction(Account senderAccount, Account receiverAccount, Double amount);
 
 }
