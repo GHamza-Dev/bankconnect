@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,22 +28,19 @@ public class AuthService {
         this.jwtUtil = jwtUtil;
     }
 
-    public Response authenticate(String email,String password) {
+    public Response authenticate(String email, String password) {
+
+        CustomUserDetails userDetails = null;
 
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email,password));
-        }catch (BadCredentialsException e){
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+
+            userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+            String jwt = jwtUtil.generateToken(userDetails);
+            return new AuthResponse("Authentication succeeded!", jwt);
+        } catch (BadCredentialsException e) {
             throw e;
         }
-
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(email);
-
-
-        if (userDetails == null){
-            throw new UsernameNotFoundException("No user found with the given email/username: "+email);
-        }
-
-        String jwt = jwtUtil.generateToken((CustomUserDetails) userDetails);
-        return new AuthResponse("Authentication succeeded!",jwt);
     }
 }
