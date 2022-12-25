@@ -1,6 +1,6 @@
 package dev.dashboard.bankconnect.Transaction.withdraw;
 
-import dev.dashboard.bankconnect.Transaction.TransactionService;
+import dev.dashboard.bankconnect.Transaction.transaction.TransactionService;
 import dev.dashboard.bankconnect.account.Account;
 import dev.dashboard.bankconnect.dto.Response;
 import org.springframework.stereotype.Service;

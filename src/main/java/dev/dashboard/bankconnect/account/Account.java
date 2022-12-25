@@ -1,7 +1,7 @@
 package dev.dashboard.bankconnect.account;
 
 import dev.dashboard.bankconnect.client.Client;
-import dev.dashboard.bankconnect.transfer.Transfer;
+import dev.dashboard.bankconnect.Transaction.transfer.Transfer;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -47,12 +47,13 @@ public class Account {
 
     public void setAccountNumber() {
 //        System.out.println(String.format("%024d", ++lastAccountNumber));
-            this.accountNumber = String.format("%024d", ++lastAccountNumber);
+        this.accountNumber = String.format("%024d", ++lastAccountNumber);
     }
 
     public double getBalance() {
         return balance;
     }
+
     public void setBalance(double balance) {
         this.balance = balance;
     }

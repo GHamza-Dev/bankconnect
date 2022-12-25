@@ -1,6 +1,6 @@
 package dev.dashboard.bankconnect.Transaction.Diposit;
 
-import dev.dashboard.bankconnect.Transaction.Transaction;
+import dev.dashboard.bankconnect.Transaction.transaction.Transaction;
 import dev.dashboard.bankconnect.account.Account;
 import jakarta.persistence.Entity;
 

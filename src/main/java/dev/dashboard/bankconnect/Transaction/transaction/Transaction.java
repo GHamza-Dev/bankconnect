@@ -1,4 +1,4 @@
-package dev.dashboard.bankconnect.Transaction;
+package dev.dashboard.bankconnect.Transaction.transaction;
 
 import dev.dashboard.bankconnect.account.Account;
 import jakarta.persistence.*;
@@ -29,7 +29,7 @@ public class Transaction {
 
     }
 
-    public Transaction(Double amount, Account account,String status, Date date) {
+    public Transaction(Double amount, Account account, String status, Date date) {
         this.amount = amount;
         this.account = account;
         this.status = status;

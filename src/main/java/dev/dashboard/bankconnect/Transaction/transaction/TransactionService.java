@@ -1,4 +1,4 @@
-package dev.dashboard.bankconnect.Transaction;
+package dev.dashboard.bankconnect.Transaction.transaction;
 
 import dev.dashboard.bankconnect.account.Account;
 import dev.dashboard.bankconnect.dto.Response;

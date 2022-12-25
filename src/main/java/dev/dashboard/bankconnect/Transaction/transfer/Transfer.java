@@ -1,7 +1,9 @@
-package dev.dashboard.bankconnect.transfer;
+package dev.dashboard.bankconnect.Transaction.transfer;
 
 import dev.dashboard.bankconnect.account.Account;
 import jakarta.persistence.*;
+
+import java.util.Date;
 
 @Entity
 public class Transfer {
@@ -19,10 +21,13 @@ public class Transfer {
     @Column(name = "receiver_account_id")
     private long receiverAccountId;
 
-    private String status;
+
+    private String status = "PENDING";
 
     @Column(name = "verification_code")
     private String verificationCode;
+
+    private Date date = new Date();
 
     @ManyToOne
     @JoinColumn(name = "sender_account_id", insertable = false, updatable = false)

@@ -2,8 +2,8 @@ package dev.dashboard.bankconnect.account;
 
 import dev.dashboard.bankconnect.client.Client;
 import dev.dashboard.bankconnect.client.ClientRepository;
-import dev.dashboard.bankconnect.transfer.Transfer;
-import dev.dashboard.bankconnect.transfer.TransferRepository;
+import dev.dashboard.bankconnect.Transaction.transfer.Transfer;
+import dev.dashboard.bankconnect.Transaction.transfer.TransferRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +18,10 @@ public class AccountService {
         this.accountRepository = accountRepository;
         this.clientRepository = clientRepository;
         this.transferRepository = transferRepository;
+    }
+
+    public Account getAccountByAccountNumber(String accountNumber) {
+        return accountRepository.findAccountByAccountNumber(accountNumber);
     }
 
 
