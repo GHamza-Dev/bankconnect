@@ -24,6 +24,27 @@ public class AccountService {
         return accountRepository.findAccountByAccountNumber(accountNumber);
     }
 
+    @Transactional
+    public boolean decreaseBalance(Account account, Double amount) {
+        if (account.getBalance() < amount) return false;
+
+        Double newBalance = account.getBalance() - amount;
+
+        account.setBalance(newBalance);
+
+        return account.getBalance() == newBalance;
+    }
+
+    public boolean increaseBalance(Account account, Double amount) {
+        Double newBalance = account.getBalance() + amount;
+
+        account.setBalance(newBalance);
+
+        accountRepository.save(account);
+
+        return account.getBalance() == newBalance;
+    }
+
 
     @Transactional
     public Account createAccount(Long clientId, String accountType) {

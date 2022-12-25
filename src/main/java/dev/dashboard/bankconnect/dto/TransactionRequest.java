@@ -3,6 +3,8 @@ package dev.dashboard.bankconnect.dto;
 import jakarta.validation.constraints.NotNull;
 
 public class TransactionRequest {
+
+    private Long id;
     private String senderNumber;
     private String receiverNumber;
 
@@ -31,5 +33,13 @@ public class TransactionRequest {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

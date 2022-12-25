@@ -1,5 +1,6 @@
 package dev.dashboard.bankconnect.Transaction.transaction;
 
+import dev.dashboard.bankconnect.Transaction.Diposit.DepositRepository;
 import dev.dashboard.bankconnect.Transaction.Diposit.DepositService;
 import dev.dashboard.bankconnect.Transaction.transfer.TransferService;
 import dev.dashboard.bankconnect.Transaction.withdraw.WithdrawService;
@@ -23,13 +24,16 @@ public class TransactionController {
     private WithdrawService withdrawService;
     private AccountService accountService;
     private TransferService transferService;
+    private final DepositRepository depositRepository;
 
-    public TransactionController(ClientService clientService, DepositService depositService, WithdrawService withdrawService, AccountService accountService, TransferService transferService) {
+    public TransactionController(ClientService clientService, DepositService depositService, WithdrawService withdrawService, AccountService accountService, TransferService transferService,
+                                 DepositRepository depositRepository) {
         this.clientService = clientService;
         this.depositService = depositService;
         this.withdrawService = withdrawService;
         this.accountService = accountService;
         this.transferService = transferService;
+        this.depositRepository = depositRepository;
     }
 
     @PostMapping("/deposit")
@@ -59,5 +63,15 @@ public class TransactionController {
         return ResponseEntity.status(response.getStatus()).body(response);
     }
 
+    @PostMapping("/deposit/accept")
+    public ResponseEntity<Response> acceptDeposit(@RequestBody TransactionRequest request) {
+        Response response = depositService.acceptDeposit(request.getId());
+        return ResponseEntity.status(response.getStatus()).body(response);
+    }
 
+    @PostMapping("/deposit/reject")
+    public ResponseEntity<Response> rejectDeposit(@RequestBody TransactionRequest request) {
+        Response response = depositService.rejectDeposit(request.getId());
+        return ResponseEntity.status(response.getStatus()).body(response);
+    }
 }

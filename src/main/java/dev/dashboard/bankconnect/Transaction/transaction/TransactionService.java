@@ -9,4 +9,8 @@ public interface TransactionService {
 
     Response makeTransaction(Account senderAccount, Account receiverAccount, Double amount);
 
+    default boolean canChangeTransactionStatus(Transaction transaction) {
+        return transaction.getStatus().equals("PENDING");
+    }
+
 }
