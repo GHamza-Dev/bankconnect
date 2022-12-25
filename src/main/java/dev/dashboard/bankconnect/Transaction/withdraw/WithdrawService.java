@@ -16,14 +16,14 @@ public class WithdrawService implements TransactionService {
 
     @Override
     public boolean canMakeTransaction(Account account, Double amount) {
-        return account.getBalance() > amount;
+        return account.getBalance() >= amount;
     }
 
     @Override
     public Response makeTransaction(Account senderAccount, Account receiverAccount, Double amount) {
-        if(senderAccount == null) return null;
+        if (senderAccount == null) return null;
 
-        if(!canMakeTransaction(senderAccount,amount)) {
+        if (!canMakeTransaction(senderAccount, amount)) {
             return new Response("This account does not have enough money!", 400);
         }
 
