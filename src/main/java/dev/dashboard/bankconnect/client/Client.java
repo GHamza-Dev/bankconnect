@@ -9,6 +9,9 @@ import jakarta.persistence.*;
 @Table
 public class Client extends User {
 
+    @Column(name = "account_type")
+    private String accountType = "standard";
+
     @OneToOne(mappedBy = "client")
     private Account account;
 
