@@ -15,6 +15,8 @@ public class Client extends User {
     @OneToOne(mappedBy = "client")
     private Account account;
 
+    private String status;
+
     public Client() {
     }
 
@@ -34,5 +36,21 @@ public class Client extends User {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
