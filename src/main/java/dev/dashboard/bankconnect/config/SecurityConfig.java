@@ -43,7 +43,7 @@ public class SecurityConfig {
                 .disable()
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/auth/**","/api/v1/client/register/**")
+                .requestMatchers("/api/v1/auth/**", "/api/v1/client/register/**")
                 .permitAll()
                 .requestMatchers("/api/v1/agent/**").hasRole("AGENT")
                 .anyRequest()
@@ -58,7 +58,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "https://bnkconnect.herokuapp.com/"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
