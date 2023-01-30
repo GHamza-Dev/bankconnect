@@ -15,7 +15,7 @@ public class Client extends User {
     @OneToOne(mappedBy = "client")
     private Account account;
 
-    private String status;
+    private String status = "pending";
 
     public Client() {
     }
